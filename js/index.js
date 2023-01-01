@@ -1,6 +1,6 @@
 var content = document.getElementById("content");
 var temp = "";
-for (var i = 1; i <= 33; i++) {
+for (var i = 1; i <= 35; i++) {
   temp += `
   <h2 class="text-center text-light"> Num: #${i}</h2>
 
@@ -18,19 +18,19 @@ for (var i = 1; i <= 33; i++) {
 content.innerHTML = temp;
 
 document.addEventListener("mouseover", function () {
-  for (var i = 1; i <= 33; i++) {
+  for (var i = 1; i <= 35; i++) {
     imageZoom(`myimage${i}`, `myresult${i}`);
   }
 });
 
 window.onresize = function () {
-  for (var i = 1; i <= 33; i++) {
+  for (var i = 1; i <= 35; i++) {
     imageZoom(`myimage${i}`, `myresult${i}`);
   }
 };
 
 function lensStart() {
-  for (var i = 1; i <= 33; i++) {
+  for (var i = 1; i <= 35; i++) {
     imageZoom(`myimage${i}`, `myresult${i}`);
   }
 }
