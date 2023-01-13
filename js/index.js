@@ -1,38 +1,96 @@
 var content = document.getElementById("content");
-var temp = "";
-for (var i = 1; i <= 35; i++) {
+var stopZoom = document.getElementById("stopZoom");
+var checkZoom = false;
+var temp = ""; 
+for (var i = 1; i <= 8; i++) {
   temp += `
   <h2 class="text-center text-light"> Num: #${i}</h2>
 
-  <div class=" img-zoom-container d-flex flex-column justify-content-center align-items-center my-4 ">
+  <div class=" d-flex flex-column justify-content-center align-items-center my-4 ">
                     <div class=" w-100 ">
                         <div class="rounded-4 overflow-hidden w-100">
                             <img id="myimage${i}" src="images/${i}.jpg" class=" w-100">
                         </div>
-                    </div>
-                    <div id="myresult${i}" class="img-zoom-result my-2 w-100"></div>
+                    </div> 
                 </div>
   `;
 }
 
 content.innerHTML = temp;
 
-document.addEventListener("mouseover", function () {
-  for (var i = 1; i <= 35; i++) {
-    imageZoom(`myimage${i}`, `myresult${i}`);
+stopZoom.addEventListener("click", function () {
+  // alert("clicked");
+  if(this.innerText == "Start zoom-in")
+  {
+    checkZoom = true;
+    stopZoom.innerHTML= `<div class="Files w-100 p-2 my-2 bg-danger fs-4 fw-semibold bg-opacity-50 rounded-4 text-center">
+    Stop zoom-in
+</div>`
+    console.log("yes");
+    content.innerHTML = ``;
+  var temp = ""; 
+  for (var i = 1; i <= 8; i++) {
+    temp += `
+    <h2 class="text-center text-light"> Num: #${i}</h2>
+  
+    <div class="img-zoom-container d-flex flex-column justify-content-center align-items-center my-4 ">
+                      <div class=" w-100 ">
+                          <div class="rounded-4 overflow-hidden w-100">
+                              <img id="myimage${i}" src="images/${i}.jpg" class=" w-100">
+                          </div>
+                      </div> 
+                      <div id="myresult${i}" class="img-zoom-result my-2 w-100"></div>
+      </div>
+    `;
+  }
+  content.innerHTML = temp;
+  }
+  else if(this.innerText == "Stop zoom-in")
+  {
+    checkZoom = false;
+    stopZoom.innerHTML= `<div class="Files w-100 p-2 my-2 bg-danger fs-4 fw-semibold bg-opacity-50 rounded-4 text-center">
+    Start zoom-in
+</div>`
+    console.log("no");
+    content.innerHTML = ``;
+  var temp = ""; 
+  for (var i = 1; i <= 8; i++) {
+    temp += `
+    <h2 class="text-center text-light"> Num: #${i}</h2>
+  
+    <div class=" d-flex flex-column justify-content-center align-items-center my-4 ">
+                      <div class=" w-100 ">
+                          <div class="rounded-4 overflow-hidden w-100">
+                              <img id="myimage${i}" src="images/${i}.jpg" class=" w-100">
+                          </div>
+                      </div> 
+      </div>
+    `;
+  }
+  content.innerHTML = temp;
   }
 });
 
-window.onresize = function () {
-  for (var i = 1; i <= 35; i++) {
+document.addEventListener("mouseover", function () {
+  if(checkZoom){
+  for (var i = 1; i <= 8; i++) {
     imageZoom(`myimage${i}`, `myresult${i}`);
   }
+}
+});
+
+window.onresize = function () {
+  if(checkZoom){
+  for (var i = 1; i <= 8; i++) {
+    imageZoom(`myimage${i}`, `myresult${i}`);
+  }}
 };
 
 function lensStart() {
-  for (var i = 1; i <= 35; i++) {
+  if(checkZoom){
+  for (var i = 1; i <= 8; i++) {
     imageZoom(`myimage${i}`, `myresult${i}`);
-  }
+  }}
 }
 
 function imageZoom(imgID, resultID) {
