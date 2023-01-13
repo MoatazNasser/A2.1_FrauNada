@@ -1,27 +1,25 @@
 * {
   box-sizing: border-box;
 }
-a,
-a:active,
-a:focus,
-a:visited {
-  color: white;
+.link {
+  color: white !important;
   text-decoration: none;
   font-style: normal;
 }
 .img-zoom-container {
   position: relative;
 }
-#Files {
+.Files  {
   color: white;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.463);
   width: fit-content;
   cursor: pointer;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.466);
 
   transition: all 0.5s;
 }
-#Files:hover {
-  color: rgb(0, 0, 0);
+.Files:hover  {
+  color: rgb(234, 238, 1);
   box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.466);
 }
 .imgW {
@@ -54,6 +52,11 @@ a:visited {
 .zIndex-1 {
   position: relative;
   z-index: 5;
+}
+
+.zIndex-2 {
+  position: relative;
+  z-index: 10;
 }
 .overlay {
   background-color: black;
